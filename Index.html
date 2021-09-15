@@ -1,28 +1,95 @@
-<?php $coviduz=file_get_contents( "https://coronavirus.uz/uz"); $arr_uz=explode(
-"<section class=\"res section-counter\ ">", $coviduz); $arr_uz=explode( "\n", $arr_uz[1]); $ret_text=""
-; foreach ($arr_uz as $key=> $value) { if(strrpos($value,"
-<p class=\ "hstat\">")!==false){ $value=str_replace("
-  <p class=\ "hstat\">", '', $value); $value=str_replace(" й. ҳолатига</p>", '', $value); $ret_text.=trim($value)."
-  holatiga ko'ra statistika:\n🔻🔻🔻🔻🔻🔻🔻\n"; } if(strrpos($value, "
-  <p class=\
-  "resone prg-count\" data-count=\ "")!==false){ $value=str_replace( "<p class=\"resone prg-count\
-  " data-count=\" ", '', $value);
-			$value=str_replace("\ ">0</p>", '', $value); $ret_text.="🔴 Jami tasdiqlangan: "
-  .trim($value). "\n▪️▪️▪️▪️▪️▪️▪️\n"; } if(strrpos($value, "<p class=\"resthree
-  prg-count green\ " data-count=\" ")!==false){
-			$value=str_replace("<p class=\ "resthree prg-count green\" data-count=\ "",
-  '', $value); $value=str_replace( "\">0</p>", '', $value); $ret_text.="🟢 Tuzalganlar: ".trim($value)."\n"; } if(strrpos($value,
-  "
-  <p class=\ "restwo prg-count grey\" data-count=\ "")!==false){ $value=str_replace(
-  "<p class=\"restwo prg-count grey\ " data-count=\" ", '', $value);
-			$value=str_replace("\ ">0</p>", '', $value); $ret_text.="🟠 Vafot etganlar: "
-  .trim($value). "\n"; } if(strrpos($value, "<p class=\"restwo prg-count davo\
-  " data-count=\" ")!==false){
-			$value=str_replace("<p class=\ "restwo prg-count davo\" data-count=\ "",
-  '', $value); $value=str_replace( "\">0</p>", '', $value); $ret_text.="🔵 Davolanayotganlar: ".trim($value)."\n"; break;
-  } } $ret_text.="\nManbaa:
-  <code>minzdrav.uz</code>"; $imzo="\n\n@Nurullayev_Nurbek"; $ret_text.=$imzo; $arr['list']=$ret_text;
-  echo json_encode($arr,JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
-  ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="all">
+    <div class="loader"></div> 
+    <div class="loader1"></div>
+    <div class="lds-heart">
+        <div></div>
+    </div>
+</div>
+    
+    
+ <style>
+  .loader {
+    margin: auto;
+    border: 3px solid lightgray;
+    border-radius: 100%;
+    border-top: 3px solid #01F982;
+    width: 350px;
+    height: 350px;
+    animation: spinner 2s linear infinite;
+    margin-top: 120px;
+
+  }
+  
+  @keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  .loader1 {
+    margin: auto;
+    border: 3px solid lightgray;
+    border-radius: 100%;
+    border-bottom: 3px solid #01F982;
+    width: 250px;
+    height: 250px;
+    animation: spinner 2s linear infinite;
+    margin-top: -300px;
+ 
+
+  }
+  
+  @keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  .lds-heart div {
+  
+    width: 32px;
+    height: 32px;
+    color: #FF007D;
+    background: rgb(255, 10, 0);
+    animation: lds-heart 2s infinite;
+    margin: auto;
+    margin-top: -140px;
+
+   
+  }
+
+  @keyframes lds-heart {
+    0% {
+      transform: scale(0.95);
+    }
+   
+    50% {
+      transform: scale(2);
+    }
+  
+    100% {
+      transform: scale(0.95);
+    }
+  }
+  
+
+  .all {
+    width: 100%;
+    margin: auto;
+  }
 
  
+ </style>
+   
+</body>
+</html>
